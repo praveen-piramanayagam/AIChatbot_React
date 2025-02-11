@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://aichatbot-server.onrender.com/api/auth";
 
 export const registerUser = async (username, password) => {
   const response = await axios.post(`${API_URL}/register`, { username, password });
