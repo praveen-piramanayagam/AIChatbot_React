@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { sendMessage, getChatHistory } from "../api/chatApi";
 import { getToken, clearToken } from "../utils/authHelper";
 import { useNavigate } from "react-router-dom";
+import { marked } from "marked";
+
 
 
 const Chatbot = ({ setAuthToken }) => {
@@ -56,10 +58,10 @@ const Chatbot = ({ setAuthToken }) => {
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
-                className={`max-w-[75%] p-4 rounded-lg text-white ${msg.role === "user" ? "bg-blue-500" : "bg-gray-700"}`}
+                className={`max-w-[75%] p-4 rounded-lg text-white ${msg.role === "user" ? "bg-black" : "bg-black"}`}
               >
                 <strong>{msg.role === "user" ? "You: " : "Bot: "}</strong>{" "}
-                <span dangerouslySetInnerHTML={{ __html: msg.content }} />          
+                <span dangerouslySetInnerHTML={{ __html: marked.parse(msg.content) }} />
                 </div>
             </div>
           ))}
@@ -77,7 +79,7 @@ const Chatbot = ({ setAuthToken }) => {
         />
         <button
           onClick={sendMessageHandler}
-          className="bg-blue-500 text-white p-4 rounded-lg hover:bg-blue-600 focus:outline-none"
+          className="bg-black text-white p-4 rounded-lg hover:bg-black-100 focus:outline-none"
         >
           Send
         </button>
