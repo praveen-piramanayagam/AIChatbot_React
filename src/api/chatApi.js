@@ -15,5 +15,6 @@ export const getChatHistory = async (token) => {
   const response = await axios.get(`${API_URL}/history`, {
     headers: { Authorization: `Bearer ${token}` },
   });
-  return response.data.chatHistory;
+  return response.data.messages; // Fix: Use `messages` instead of `chatHistory`
 };
+

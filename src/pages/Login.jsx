@@ -17,7 +17,7 @@ const Login = ({ setAuthToken }) => {
         setToken(response.token);
         // console.log(response);        
         setAuthToken(response.token);
-        navigate("/chat"); // ✅ Redirect to Chatbot page after login
+        navigate("/history"); // ✅ Redirect to Chatbot page after login
       } else {
         console.error("No token received:", response);
       }

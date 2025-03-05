@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"; // Make sure useEffect is imported
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes,Navigate } from "react-router-dom";
 import { getToken } from "./utils/authHelper";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -28,10 +28,11 @@ function App() {
           />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/chat"
+            path="/history"
             element={authToken ? <Chatbot setAuthToken={setAuthToken} /> : <Login setAuthToken={setAuthToken} />}
           />
-        </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
       </div>
     </Router>
   );
